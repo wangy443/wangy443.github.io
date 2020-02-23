@@ -1,0 +1,692 @@
+1.快捷键
+windows+D 显示桌面
+2.dos 命令
+切换盘符     e:   g:
+查看当前目录下所有文件和文件夹       dir
+退到上一层     cd ..
+退到根目录     cd /
+创建文件夹     md  文件夹名
+创建文件        copy con 文件名.格式
+清屏               cls
+删除文件夹      rd  文件夹名
+删除文件         del  文件名
+3.高级语言
+java 语言特点
+面向对象，简单易学
+跨平台，一次编译，处处运行
+适合分布式项目
+4.java分支
+javase标准   javaee企业
+5.jre(java Runtime environment)
+java的运行环境包括jvm(java虚拟机java virtual machine)和 java核心类库
+6.jdk(java development kit)
+java开发工具包括jre和java开发工具包
+7.安装jdk1.8
+bin 可执行文件 java.exe   javac.exe
+include 本地接口编程
+lib java开发工具包
+ .zip  jdk源码
+8.配环境变量window10
+（一）计算机-右键属性-高级系统设置--环境变量-系统变量-path,粘贴到 \bin
+jdk的环境变量
+（二）计算机-右键属性-高级系统设置--环境变量-系统变量-新增，变量名JAVA_HOME   变量值 到\bin的上一级，
+双击path,新建，%JAVA_HOME%\bin
+9.classpath  :;地址
+10.标识符
+26个大小写英文字符，数字，_$
+类名和接口名：首字母大写，驼峰命名
+变量名和方法名：驼峰
+包名：全小写，单词之间用.分割
+常量：全大写，单词之间用_分割
+11.基本数据类型8种
+数值类型：整数类型（字节类型byte1，短整型short2，整型int4,长整型long8），小数类型(单精度float4，双精度double8)
+布尔类型:boolean
+字符类型:char2
+引用数据类型：类、数组、接口
+12.1个字节占8个二进制位
+float和long比较由于存储结构不同，float表示范围大
+float price = 12.5f;  默认双精度，所以加f
+char c = 'a';   单引号，一个字
+13.基本数据类型转换
+自动转换  byte short int long float double
+byte short char 都会转成int
+int long float double 自身计算不会有类型提升，超出范围会损失精度
+int long float double 不同类型计算会有类型提升，向大的表数范围转
+强制转换
+转换前提是精度不会损失
+byte a = (byte)b;
+14.赋值运算符不会类型提升 +=  -=   *=  /=
+15.switch 如果没有break就会穿透执行，后面的case即使不匹配也会执行，直到遇到第一个break才会跳出
+16.闰年29天 （能被400整除）|| （能被4整除且不能被100整除）
+17.break结束终止for  while  do while循环
+18.continue终止本次for  while  do while循环
+19.方法返回值是void, return;表示终止
+20.有返回值得不能写return; 会报错
+21.方法的重载，参数名相同，参数列表不同（参数个数不一样，参数类型不一样）
+22.引用数据类型，类class  接口interface   数组[]
+23.基本数据类型存储在栈中，栈的特点是存储空间小，但存取速度快，先进后出。
+24.引用数据类型占用空间大，存储在堆中，堆特点空间大，存取速度慢，先进先出。
+25.数组的长度length,数组下标不要越界使用
+26.数组 int[] arr = new int[10];
+27.数组 int[] arr = {1,2,3,4}; 根据初试值得个数决定长度
+28.数组 int[] arr = new int[]{1,2,3,4};
+29.int[] arr = null;空指向;
+30.if(arr!= null && arr.length!=0){}   判断顺序不能颠倒
+31.类的概念：把某些具有相同属性和行为的事物抽象成一个类
+32.权限修饰符 <static>  返回值[void]  方法名(参数列表){
+         //方法体
+         [return xxx]
+}
+33.创建对象的语法  类名  变量名 = new 类型();
+34.类也是一种数据类型
+35.内存结构图
+栈：基本数据类型，引用数据类型的引用
+堆：引用数据类型，默认值int 是0 
+数据共享区：方法
+36.局部变量，存在栈中，没有默认值，使用之前必须赋值，作用域在大括号内，执行完消失
+37.成员变量（属性），存在堆或数据共享区中，有默认值，作用在整个类中，jvm回收机制自动回收
+默认值    byte short int long 0      float 0.0f   double 0.0   char ''   boolean false   引用数据类型 null
+38.垃圾回收机制：没有引用的对象（匿名对象）会被回收。null只在引用数据类型里面
+40.对象的创建是在堆中，对象与对象之间的数据是完全隔离的，引用是存在栈中
+41.封装：将属性私有化，使用private关键字完成属性私有化，这种属性只有本类能访问。
+我们一般对每一个私有属性提供公共public的set和get这种方法供外界来访问我们的私有属性。
+42.封装目的：提高数据安全性，通过封装，可以实现对属性访问权限的控制，同时增加了权限的可维护性。
+43.面向对象三大特征：封装，继承，多态
+44.this存在对象方法（不带static的方法是对象方法）里
+45.对象方法中隐藏了this关键字，this表示调用这个方法的那个对象，在对象方法中this是可以省略的
+46.构造器：没有返回值，也没有void;构造器的方法名必须与类名一致；在方法中定义要初始化的参数列表
+47.如果类存在有参的构造器的话，默认的构造器会被覆盖。如果还想去使用这个有参构造器，就必须要显示的定义出来。
+48.构造器可以调用构造器，this(barnd,color);被调用的构造器放在有效代码第一行；
+49.static关键字修饰属性，static int age = 10;
+50.static类属性生命周期：类文件被载入jvm的时候就会自动的初始化static属性，存在数据共享区中，jvm销毁后就会销毁类文件，static的属性也就随之销毁
+51.对象属性的生命周期：随着对象的产生而创建，对象如果被gc 回收，属性自然也就不存在了
+52.static属性用法   Person.pcount = 10;   p.pcount=10;(不推荐)
+53.static方法用法：类方法是在static的属性初始化之后初始化。类方法的调用也是通过类名.方法名
+54.对象方法是共享的，但是这个对象方法一定是创建了对象之后才能调用。对象方法的生命周期是在对象创建之后
+55.super
+子类实例化的过程中父类的构造器先被调用，然后在调用子类的构造器;
+子类通过构造器实例化时要调用父类的默认构造器，是隐含的调用super()这个方法。但是如果子类的构造器中调用了父类中有参构造器，那么无参的构造器就不会被调用了;
+super()的调用必须要放在方法的第一行;
+super可以表示父类的引用，我们可以使用super和this来区分父类和子类中同名的属性。在子类中访问属性的查找顺序首先在子类中查找指定的属性名称，如果在子类中没有该属性，
+那么就去父类中去查找该属性。方法也是一样的当子类和父类有相同的方法时通过子类调用的这个相同的方法时调用的是子类方法，但是我们可以通过super对父类的引用来调用父类
+的方法。
+56.方法的重写：在子类继承父类时，子类的方法和父类相同（访问修饰符限制，返回值类型，方法名，参数列表）
+方法体不同。这种子类的方法将父类的方法覆盖叫做重写。
+57.重写和重载的区别：
+重写（override）：在父子类的继承中有相同的方法，唯一不同就是方法体，一般是父类的该方法
+满足不了子类的需求所以才发生重写。不能重写static 静态方法。
+重载（overload）：重载时在同一个类中，有着相同的方法名但是参数的数据类型或者参数的个数不同
+这两个方法就是重载。重载的目的：节约类中的命名资源和提高代码的可读性。
+58.final关键字:
+修饰在局部变量上， final int i = 10;    i=20;会报错，这个变量不能修改就变成了常量。
+修饰在属性上，final int age;属性都有默认值，但final修饰的话就没有默认值了，要求要在构造器
+中赋值，一旦这个值赋值完毕就不能再修改了，如果不在构造器中赋值，就直接给一个默认值。
+修饰在方法上， public final method(){ }不可以被子类重写。
+修饰在类上,final class Parent{  } 不能被继承
+59.抽象类：abstract，定义一个抽象的方法，没有方法体，一个类里面有抽象方法，这个类一定是抽象类。但抽象类中不一定有抽象方法，
+这样做的目的是为了此类不能被实例化。
+abstract class Teacher{   public abstract void teach();  }    
+如果一个具体类继承了抽象类，那么就必须要实现所有抽象方法
+特点：
+抽象类不能被实例化；不能 new Person()
+抽象类必须被子类继承才能使用子实例化。
+继承了抽象类的非抽象类，必须实现抽象类的所有抽象方法。
+抽象类也可以继承抽象类，这样不需要实现父类抽象类的方法。
+抽象类的抽象方法不能和provate,final, static共存。
+60.接口的定义：当一个抽象类，如果抽象类中的所有方法都是抽象的，
+那么我们就可以把它定义为一个接口，接口是对行为的抽象。类是对属性和行为的抽象。
+接口中没有属性。interface 
+特点：
+接口中的方法的定义不需要Abstract来修饰，默认就是抽象的
+接口是不可以实例化的，需要有类来实现接口class 类名 implements 接口名{  实现每个接口的方法}
+接口中的方法不能和private,static,final共存
+在接口中可以定义“属性”，可以通过接口的实现类的实例来访问，还可以通过接口名来访问（推荐使用）
+接口中的属性不能修改，我们接口中的属性默认都是public static final的，通常在接口中来定义属性
+把它作为常量，常量的名字规范是单词大写，而且多个单词之间用下划线来分隔。比如：FILE_PATH
+接口可以继承接口，可以多继承
+61.使用接口的好处：
+接口定义的是一种标准，可以使我们的代码分层开发，分模块开发。
+降低代码的耦合度，提到代码的可扩展性和可维护性
+接口改进了单继承的局限。
+62.接口和抽象类的区别：
+接口是行为的抽象可以有静态方法、抽象方法和默认方法（无对象方法），抽象类中可以有多有方法。
+接口和抽象类都不能实例化，接口需要类来实现后，实例化实现类，抽象类需要类来继承然后实例化子类。
+抽象类只能单继承，接口可以多继承接口，接口还可以多实现。
+接口中的“属性”是 final static类型的，抽象类中的属性跟普通类中的属性没有区别。
+接口中的方法默认就是抽象的不需要加abstract,抽象类中的抽象方法需要加上abstract关键字。
+63.父子类类型转换
+子类转换成父类时
+子类的实例可以自动的转换成父类的类型
+如果子类里面有对父类方法的重写，那么通过父类的引用调用重写的方法的时候调用的是子类
+t是Teacher类型，Teacher类中没有makeFriend();,不可以调用子类的特有方法
+
+父类转换成子类时
+父类如果转换成子类必须强制转换，但前提是这个父类的真身是这个子类。JavaTeach ji= (JavaTeach)t;
+64.多态就是行为具有多种功能的能力。
+继承多态
+接口多态
+65.API的使用
+java.lang这个包下的所有类都是自动引入的。
+66.包的使用
+包：就是文件夹
+作用：对类做分类管理，可以区分同名不同包的类。
+语法：package 包名（不同级别用“.”来分隔）；如 package com.rl;位置放在文件的有效代码第一行。
+如何编译： javac -d . 源文件        java com.rl.源文件
+相同包下的类，可以直接使用。
+不同报下的类，必须通过import引入才能使用。
+67.内部类
+普通内部类，外部类调内部类：方法1，在外部类的方法中创建内部类，通过调用外部类的这个方法创建内部类；
+方法2，外部类.内部类 变量名 = new 外部类对象.new 内部类对象。
+匿名内部类，我们new的不是接口，接口是不能创建对象的，我们new的是一个实现了Teacher接口的一个类，
+但是他没有名字
+Teacher t=new Teacher (){
+	public void teach(){
+		system.out.println("临时的")
+	}
+}；
+t.teach();
+
+new Teacher (){
+	public void teach(){
+		system.out.println("临时的")
+	}
+}.teach();
+68.权限修饰符
+4种private,默认，protected,public，修饰在类、方法、属性上
+类：在一个java文件中，只能有一个类是public，加上public的类必须要和文件名字一致；
+区别：
+在同一个类里都能访问；
+在同一个包中只有private不能被访问
+在不同的包，父子类继承，默认和private是不能被访问的
+在不同的包非父子类继承（无关类），只有public可以访问
+69.object类：object类是所有类的根类，所有的类都是直接或者间接的去继承Object类
+根类：最顶层的类
+超类：
+父类：
+toString()方法
+public String toString(){
+	return getClass().getName()+"@"+Integer.toHexString(hashCode());
+}
+getClass().getName():这是我们后面学到的反射的时候才能知道的，获取一个类的类对象的名字。
+hashCode():每次创建一个对象的时候jvm都会分配一个hashCode的值，这个值是惟一的。
+Integer.toHexString(hashCode())：把十进制的数变成十六进制
+equals重写
+public boolean equals(Object obj){
+定义一个是否相等的变量
+boolean isEquals = false;
+保证传递过来的是Student类的对象
+if (obj instanceof Student){
+把父类转换成子类
+Student s = (Student)obj;
+if(this.name.equals(obj.name) && this.stuNum.equals(obj.stuNum) && this.age == obj.age){
+isEquals = true;
+}
+}
+return isEquals;
+}
+70.作业题
+import java.util.Scanner;
+public class StudentText{
+	public static void main(String[] args){
+		Scanner s = new Scanner(System.in);
+		Student stu= new Student();
+		System.out.println("请输入姓名");
+		String name = s.next();
+		stu.setName(name);
+		
+		System.out.println("请输入年龄");
+		int age = s.nextInt();
+		stu.setAge(age);
+		
+		System.out.println("请输入身高");
+		int height = s.nextInt();
+		stu.setHeight(height);
+		
+		System.out.println("信息如下：");
+		System.out.println(stu);
+		}
+	}
+	71.idea配置jdk开发环境  projectDefaults   project Structure
+	72.idea隐藏文件 Editor  fileType  ignore   *.idea;*.iml;
+	73.idea设置编码   file Encodings   3处utf8 勾勾
+	74.idea 不区分大小写提示  Editor  general  Code Completion  :none
+	75.设置自动导包  Editor  general    auto import   两个 自动引包  自动去掉包  （alt+enter）
+	76.生成代码快捷键
+	主方法psvm
+	输出打印 sout
+	for循环  fori
+	77.流程控制语句  ctrl+alt+t
+	增强for循环  a.for      for(int i : a)    a是变量可以替换其他名字
+	78.alt+insert  封装 生成get set方法  生成构造器   复写toString    
+	79.快捷键
+	ctrl+H 查看类的继承结构
+	ctrl+N 通过类名定位文件
+	ctrl+O 覆写、重写
+	ctrl+F12   属性方法列成大纲
+	ctrl+space(空格) 输入法展示提示
+	Alt+Enter 生成变量名  给建议
+	ctrl+alt+B 在某个调用的方法名上使用会跳转到具体的实现处
+	ctrl+alt+l   格式化
+	Ctrl+alt+左/右   退回、前进到上一个操作地方
+	ctrl+shift+U 大小写切换
+	80.异常：运行时异常 和 编译时异常
+	运行时异常
+	try{
+	c= c/0;
+	return c;
+	}catch(Excaption e){
+	c= 4;
+	执行了return方法的返回值就形成了，后续的finally不管怎么修改 都无济于事
+	return c;
+	
+	}finally{
+	finally是唯一一种方式能在return后面执行的代码
+	c= 5;
+	finally内部的return可以修改方法的返回值
+	return c;
+	
+	}
+	运行时的异常自动向上抛，但编译时的异常必须手动的向上抛
+	编译时异常alt+Enter    throws IOException
+	自定义异常，我们实际定义的都是运行异常
+	比如：库存不足
+	自定义一个类继承异常类 
+	public class stockExcaption extends RuntimeExcaption{
+	ctrl+O快捷键 选需要重写的构造器
+	}
+	需要抛异常时  写    
+	throw new stockExcaption("库存不足");
+	捕捉并处理知道如何处理的异常，而抛出不知道如何处理的异常。
+	
+	package cn.text;
+
+  public class ErrorAgeExcaption extends Exception {
+    public ErrorAgeExcaption() {
+        super();
+    }
+
+    public ErrorAgeExcaption(String message) {
+        super(message);
+    }
+}
+
+
+package cn.text;
+
+public class Text3 {
+    public static void main(String[] args) {
+        Person p = new Person(13,"wangy");
+        try {
+            testPerson(p);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void testPerson(Person p) throws ErrorAgeExcaption{
+        if(p.getAge() > 200 || p.getAge() < 0) {
+            System.out.println(p.getName()+"是妖怪");
+            throw new ErrorAgeExcaption("年龄不合法");
+        }else{
+            System.out.println(p.getName()+"是正常人");
+        }
+    }
+}
+	
+	
+
+	81.字符串内存结构特点
+	String  str = "abc"； str在栈中0x98， abc在数据共享区的字符串常量池中（0x98）
+	String str1 = "abc"； str1在栈中0x98，abc在数据共享区的字符串常量池中（0x98）,
+	str和str1共用一个0x98 abc字符串
+	82.String str = "hello";
+	str = str+"word";
+	字符串常量是不能改变的，如果对字符串常量来拼接不是原有的字符串常量上追加，而是新
+	产生一个字符串。
+	83.String s = "abcde";   char c = s.charAt(3);     
+	c为d,给定一个索引，返回索引处的字符，索引从0开始
+	84.  str.getBytes();获得字符串对应的字节数组
+	str.toCharArry();获得字符串对应的数组
+	85. 静态方法 String.valueOf();
+  86.StringBuffer sb= new StringBuffer("hello");
+  StringBuffer sb1 = sb.append("world");
+  Syestem.println.out(sb==sb1);    
+  true,说明StringBuffer是可变字符串，在原有字符串上追加返回这个字符串的对象
+  87.可变字符串线程安全，StringBuffer可以解决线程安全的问题，但随之而牺牲的是性能
+  88.获得容量 sb.capacity(); 默认是16，追加的字符串超出容量，自动扩展。
+  89.append（）往后追加    insert(offset, jjj);  在索引前插入   delete(1,2);包头不包尾 
+  replace(start,end ,str)包头不包尾     reverse（） 翻转    equals  不等因为没有重写
+  90.random随机数   Random r = new Random(种子);   int num=r.nextInt();获取随机数
+  int s = r.nextInt(10); s是0-10之间的随机数
+  91.System    System.currentTimeMillis();从当前时间到1970年1月1日0点的毫秒数
+  92.java.lang下的不需要引入  static是类方法 直接 类名.方法();直接调用
+  System.exit(-1); 退出，终止当前运行的java虚拟机
+  System.gc(); 运行垃圾回收期	  
+  Properties properties = System.getProperties(); 获取当前系统的属性
+  Set<Object> objects  = properties.keySet(); 获得键值对集合的key
+  for(Object obj : objects){
+  System.out.println(obj+"===="+properties.get(obj));
+  }
+  String property = System.getProperty("user.home");
+  System.out.println(property);
+  93.包装类
+  Byte  MAX_VALUE   MIN_VALUE    SIZE 
+  94.int 转为 Integer
+  int a = 10;
+  Integer obj1 = new Integer(a); 或
+  Integer obj2 = Integer.valueOf(a);
+  
+  95.Integer 转为 int
+  Integer b = new Integer(10);
+  int a = b.intValue(b);
+  
+  96.int 转为String
+  int a = 10;
+  String b = a+""; 或
+  String b1 = String.valueOf(a);
+  
+  97.String 转为int
+  String a = "10";
+  int b = Integer.parseInt(a);
+  
+  98.Integer 转为String
+  Integer i = new Integer(10);
+  String s1 = i+""; 或
+  String s2 = i.toString();
+  
+  99.String 转为Integer
+  String s = "123";
+  Integer i = new Integer(s);
+  
+  100.自动装箱 自动拆箱
+  int --->   Integer  自动装箱
+  int a = 100;
+  Integer i = a;
+  
+  Integer --->   int  自动拆箱
+  Integer i1=new Integer(10);
+  int i2 = i1;
+  特殊
+  -128到127之间 用的缓存对象所以
+  Integer i1 = 127;
+  Integer i2 = 127;
+  System.out.println(i1 == i2); true
+  
+  Integer i3 = 129;
+  Integer i4 = 129;
+  System.out.println(i3 == i4);  new Integer();所以为false
+  101.实战 比较integer 数值大小是否相等
+  if(i.intValue() == i1.intValue){
+  }
+  或者
+  if(i.equals(i1)) {
+  }
+  102.实战 默认值
+  int gender; 默认是0
+  Integer gender; 默认是null
+  102.日期 Date();
+  Date date = new Date();
+  long time = date.getTime();  获取从1970年到现在的毫秒数
+  
+  long ytime = time - 24*60*60*1000; 到昨天的毫秒数
+  Date ydate = new Date(ydate); 毫秒转换成时间格式
+  
+  Date data1 = new Date(System.currentTimeMillis()); 根据系统毫秒数转换成日期
+  103.日期格式化
+  Date date = new Date();
+  SimpleDateFormat sdt = new SimpleDateFormat(); 创建日期格式化的类
+  String format = sdf.format(date);
+  System.out.println(format); 19-2-21 下午10:02
+  
+  SimpleDateFormat sdt1 = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"); 创建日期格式化的类
+  String format1 = sdf1.format(date);
+  System.out.println(format1); 2019-02-21 22:05:08   
+  a 是上下午   S是毫秒 一般三位SSS    E星期几
+  104.日期时间反格式化  把字符串转成日期对象
+  SimpleDateFormat sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss"); 先创建格式
+  String str = "2019/02/21 22:05:08";  符合格式的日期字符串
+  Date d = sdt.parse(str);      打印 Sat Dec 21 23:12:30 CST 2019
+  105.集合
+  Collection  list       ArrayList  linkList   Vector
+              Set        HashSet    TreeSet    LinkedHashSet
+              
+  <E> 泛型
+  106.
+  Collection coll = new ArrayList();
+  coll.add("小明1");  coll.add("小明2");   
+  coll.addAll();  
+  coll.clear();  
+  coll.remove("小明2");
+  coll.removeAll();
+  int size = coll.size();  获取长度
+  boolean b = coll.contains("小明1");    true  判断是否包含
+  boolean b = coll.containsAll();    true
+  boolean b1 = coll.isEmpty();  判断是否为空
+  Object[] b = coll.toArray();  把集合转换为数组
+
+  107.集合的遍历
+  Iterator iterator = coll.iterator();
+  while(iterator.hasNext()){
+  Object b = iterator.next();
+  System.out.println(b);
+  }
+  108.List 有序的Collection,就像数组一样，可以把List理解为一个长度可变的数组
+  List list = new ArrayList();
+  list.add("小明")； 默认向最后位置添加
+  list.add(0，"小明0")；第一位是索引，向索引位置插入
+  list.addAll();
+  String o = （String）list.get(1); 根据索引 获得对应索引的内容,不要越界   打印为小明
+  int size = list.size();  获取长度
+  list.set(1, "wangy");修改指定索引的值
+  109.集合遍历listIterator,可以向后遍历也可以向前遍历
+  向后遍历
+  ListIterator listIterator = list.listIterator();
+  while(listIterator.hasNext()){
+  String str = (String)listIterator.next();
+  Systom.out.println(str);
+  }
+  向前遍历
+          ListIterator listIterator = list.listIterator();
+        while(listIterator.hasPrevious()){
+            String str = (String) listIterator.previous();
+            //向list中添加
+            if (str.equals("小明1")) {
+                listIterator.add("wangy");
+            }
+            System.out.println(str);
+        }
+        
+  110.for对lsit遍历
+        int size = list.size();
+        for(int i = 0; i< size;i++){
+        String s= (String)list.get(i);
+	        if(s.equals("小明1")){
+	        	list.add("wangy");
+	        }
+        }
+        System.out.println(list);
+  111.  .indexOf("小明1");   .lastIndexOf("小明1");
+  112. 
+  根据索引删除，返回删除的内容
+  Object rem = list.remove(1); 
+  System.out.peintln(rem);   打印出第一项的内容
+  根据元素删除
+  boolean rem = list.remove("wangy"); 
+  System.out.peintln(rem);   打印是否删除成功
+  113.ArrayList的底层是数组的原理，元素可重复，有序的集合，长度是不固定的，不是线程安全的，效率高
+  ArrayList在添加数据的时候初始的长度是10，后续会以5个长度来扩充集合的长度
+  如果线程是同步的话，性能会降低
+  114.LinkedList  list接口
+  栈，先进后出
+  队列，先进先出
+  链表，存储了元素和前后地址
+  LinkedList  也不是线程安全的，是链表为原理，添加修改和删除的性能高
+  LinkedList list = new LinkedList();
+  list.add("1"); 向最后添加
+  list.addFirst("0");  0,1   向最前边添加
+  list.push("00");00,0,1     向最前边添加
+  Object pop = list.pop();    0,1  去掉最前边的
+  list.removeFirst();    删除最前边的
+  list.removeLast();     删除最后边的
+  115.Vector底层也是数组，线程安全的,性能下降
+  Vector list = new Vector();
+  list.add("1");
+  Object o = list.get(0);
+  
+  for循环
+ 116.泛型：在集合中指定存储的数据类型
+ List<类型>  
+ List<String> list = new ArrayList<这里可写可不写>();
+ 117.自定义泛型
+ class/interface 类名/接口名<T>{
+ 
+ }
+ 
+ public class GenericTest<T>{
+//    定义一个泛型属性
+    private T t;
+    public T getT() {
+        return t;
+    }
+    public void setT(T t) {
+        this.t = t;
+    }
+}
+
+        GenericTest<Integer>  gt1 = new GenericTest<>();
+        gt1.setT(1);
+//        获得泛型的对应结果
+        Integer t = gt1.getT();
+        System.out.println(t);
+ 118.增强for循环
+ for(数据类型 变量 ：集合变量){
+ }
+ 这个增强的for 不支持并发,如果有并发的需求要用普通for
+ 119.Set   HashSet中的元素是不能重复的，最多包含一个null, 元素无序，不是线程安全的（效率高）
+ Set<String> set = new HashSet<>();
+ set.add("0");
+ Set.add("0"); 如果重复，自动去掉
+ 120.hashSetd 扩展 如果对象的hash值和equals都相等那么就是重复的对象。
+ 重写 public int hashCode(){
+   return 1;
+ }
+ 重写 equals
+ 121.LinkedHashSet 有顺序，应用较少其余和HashSet 一样
+ 122.TreeSet
+ 
+ String str = "bb";
+ String str1 = "ackkkk";
+ 字符串的比较规则是先按着第一个字符串比较，如果第一个字符串比另一个字符串的首字母大，那么前者大
+ 如果是正数说明str大  如果是负数 str1大  如果是0 则相等
+ int i = str.compareTo(str1);
+ 
+ 类如果要实现比较的规则，都会实现compareTo
+ 
+ 123.TreeSet 特点 元素唯一，可自定义排序，不允许null存在，不是线程安全
+ 必须要实现compareTo接口
+ 124.可变参数
+ 数据类型...变量    这是可变参数定义方式，可以代表数组也可以代表单个数的传递
+ 如果调用时有正好匹配的方式，就不会调用可变参数。
+ public static init(int...a){
+ int totle = 0;
+ for(int i = 0; i<a.length; i++){
+ totle+=a[i];
+ }
+ return totle;
+ }
+ 125.Arrays数组的工具类
+ Arrays.toString(变量)； 转成字符串
+ 排序 Arrays.sort(变量)； 从小到大
+ 二分法查找 
+         int[] str = {0, 1, 2, 3}; 有序的
+        int i = Arrays.binarySearch(str, 1);
+        System.out.println(i);
+ 
+ 把数组转成list
+ int[] a = {1,2,3,5};
+ list<int[]> ints = Arrays.asList(a);  打印出来是地址
+ 
+ Integer[] a = {1,2,3,4};
+ List<Integer> integer = Arrays.asList(a);答疑是值
+ 
+ integer.add(5);错误
+ 所以 我们不能把基本数据类型的数组转换成集合，如果要传递了基本数据类型的集合，就会把数据的类型做成泛型
+ 如果数组转换成集合，长度不能改变
+ 126.集合的工具类Collections
+ 集合翻转 Collections.reverse(变量);
+ 打乱集合  Collections.shuffle(变量)；
+ 排序     Collections.sort(变量);   
+ 外部比交器
+ 127.Map是键值对
+ Map<K,V> 一个元素不能包含重复的键，如果出现重复的键，就把前边的覆盖，键就是Set，元素唯一，只能有一个null.
+ Map<String,String> map = new HashMap<>();
+ map.put("a", "aa");
+ map.putAll();
+ map.clear();
+ map.remove(key);删除
+ String a = map.get(key); 根据key获值
+ Set<string> strings = map.keySet();   ["a", "b", "c"]
+ boolean isCon = map.containsKey("key"); 判断是否包含指定的key
+ boolean isCon  = map.containsValue("值")；判断是否包含指定的值
+ boolean empty = map.isEmpty(); 是否为空
+ 遍历 entrySet
+         Set<Map.Entry<String, String>> entries = map.entrySet();
+        for (Map.Entry<String, String> entry : entries) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            System.out.println(key+"--"+value);
+        }
+ 128.TreeMap,不是线程安全的，根据key排序，key不能是null, 可以有多个null值
+ 129.HashTable,不允许null键和null值，线程安全的
+ 130.LinkedHashMap,允许一个null键，多个null值，不是线程安全的，有添加顺序
+ 131.文件File,用来创建文件对象的
+ File file = new File(""); 文件绝对路径，保证路径正确， 打印的是文件路径
+ 132.创建文件
+        File file = new File("C:\\Users\\IBM\\Downloads\\wangy.txt");
+        boolean newFile = file.createNewFile();    返回true是创建成功
+ 133.创建一层目录
+         File file = new File("C:\\Users\\IBM\\Downloads\\wangy");
+        boolean mkdir = file.mkdir();  返回true是穿件目录成功
+ 134.创建多层目录s
+          File file = new File("C:\\Users\\IBM\\Downloads\\wangy\\aa\bbb");
+        boolean mkdir = file.mkdirs();  返回true是穿件目录成功
+ 135.删除文件，回收站中没有
+         File file = new File("C:\\Users\\IBM\\Downloads\\wangy.txt");
+        boolean delete = file.delete();
+ 136.删除目录，只有空文件才能删除
+         File file = new File("C:\\Users\\IBM\\Downloads\\wangy");
+        boolean delete = file.delete();
+ 
+ 137.文件的获取功能，获取绝对路径
+ String absolutePath = file.getAbsolutePath();
+ 相对路径是当前项目的根路径
+ 138. 获得路径名称   String path = file.getPath();
+ 139.获得文件名      String name = file.getName();
+ 140.获得文件大小    long length = file.length(); 单位是字节
+ 141.文件最后修改时间  long l = file.lastModified();
+ 142.获取磁盘对象 listRoots
+         File[] files = File.listRoots();
+        System.out.println(Arrays.toString(files));  打印[C:\, D:\, E:\, F:\, G:\]
+ 143.获取子文件对象 listFiles       
+        File file = new File("C:\\Users\\IBM\\Downloads");
+        File[] files = file.listFiles();
+        for (File file1 : files) {
+            System.out.println(file1);
+        } 
+ 144.子文件的名字   String[] list = file.list();
+ 145.
+ 判断文件是否存在    boolean exists = file.exists();
+ 判断是否是文件      boolean file1 = file.isFile();   true 是文件   false文件夹
+ 判断是否是目录      boolean directory = file.isDirectory();
+ 判断是否是绝对路径  boolean absolute = file.isAbsolute();
+ 是否可读            boolean b = file.canRead();
+ 是否可写            boolean b1 = file.canWrite();
+ 是否隐层            boolean hidden = file.isHidden();
+ 146.IO流 抽象类
+ 输入流 输出流
+ 字符流 字节流
+ 147.字符流 输出流Writer   字符输入流Reader
+ 
+ 
+  
+  
+  
