@@ -1,0 +1,231 @@
+一、sql操作语句
+show  databases;   查看数据库
+
+create  database  数据库名字;     如：create database test;    	创建数据库
+
+drop  database  数据库名字；   如：drop database tests;       删除数据库
+
+ALTER DATABASE - 修改数据库
+
+use  数据库名字；   如：use test;   选择数据库
+
+show tables;    查看数据库中的表
+
+create table 表名字(列名字  类型，列名字 类型，类名字 类型);    创建表
+CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
+   `runoob_title` VARCHAR(100) NOT NULL,
+   `runoob_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `runoob_id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE perple(id int primary key auto_increment, name varchar(20), gender enum("male", "famale","aa"),country_id int, );枚举 不符合没居的插入空
+drop table  表名字； 如：drop  table test;    删除表；
+
+INSERT INTO runoob_tbl(runoob_title, runoob_author,submission_date) VALUES ("学习php","11",NOW());    插入数据
+INSERT INTO runoob_tbl(runoob_title, runoob_author,submission_date) VALUES ("学习web","12","2019-04-05"),("学习gg","15","2019-04-06"),("学习node","3","2019-04-05"); 
+INSERT INTO runoob_tbl(runoob_title, runoob_author,submission_date) VALUES ("学习gg","15","2019-04-06"); 
+INSERT INTO runoob_tbl(runoob_title, runoob_author,submission_date) VALUES ("学习node","1",null); 
+
+select  *  from  表名字；  如： select * from runoob_tbl;   查询数据
+SELECT column_name,column_name
+FROM table_name
+[WHERE Clause]
+[LIMIT N][ OFFSET M]
+
+SELECT * from runoob_tbl  WHERE  runoob_title = "学习php";       条件查询   多个条件用AND 或 OR连接
+
+UPDATE runoob_tbl SET runoob_title ="wangy" WHERE runoob_id = 1;    更新数据
+
+DELETE from runoob_tbl  WHERE runoob_id = 1;           删除数据
+DELETE FROM table_name;                    删除表中所有数据
+
+
+SELECT * from runoob_tbl WHERE runoob_title LIKE "%PHP" ;     LIKE语句 与%搭配使用  _ 下划线表示一个字符；  NOT LIKE 不匹配
+
+SELECT DISTINCT country FROM Websites;    仅从country列取出唯一值；
+
+SELECT * FROM Persons  LIMIT 5; 显示5条 mysql
+SELECT * FROM Persons WHERE  ROWNUM <=5;     显示5条 Oracle
+SELECT TOP 50 PERCENT * FROM Websites;  从 websites 表中选取前面百分之 50 的记录：
+
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;    用于链接两个及以上的select语句 默认是去重，写UNION AlLL不去重
+
+SELECT * from runoob_tbl ORDER BY submission_date ASC;   排序默认ASC升序     DESC降序   可以有多个排序条件
+
+SELECT  coalesce(runoob_title, '总数'), COUNT(*)  From runoob_tbl GROUP BY  runoob_title  WITH ROLLUP;  分组查询  COUNT(*), SUM(singin), AVG
+
+CREATE  TABLE wangy AS SELECT * FROM stu;    拷贝表结构及数据
+
+SELECT * INTO  wangys FROM stu WHERE 1=0;   创建一个新的空表
+create table new_stu  like stu;       创建一个新的空表
+
+insert into new_stu select * from stu;  复制数据
+
+连接
+INNER JOIN   匹配的查出来
+LEFT JION      右表不匹配左表也全部查出来
+RIGHT JION   查右表，即使左表没有匹配的
+SELECT a.runoob_id, a.runoob_author,b.runoob_count From runoob_tbl a,tcount_tbl b WHERE a.author = b.author;
+SELECT a.runoob_id,a.runoob_author,b.runoob_count from runoob_tbl a INNER JOIN tcount_tbl b ON a.runoob_author = b.runoob_author;
+
+SELECT * FROM runoob_tbl WHERE submission_date IS NULL;      判断是不是NULL
+SELECT * FROM runoob_tbl WHERE submission_date IS NOT NULL;
+
+Select * from emp where sal between 1500 and 3000;        between and (在 之间的值)
+
+Select * from emp where sal in (5000,3000,1500);     查询 EMP 表 SAL 列中等于 5000，3000，1500 的值。 IN 操作符允许您在 WHERE 子句中规定多个值。
+
+foreign key(country_id) references country(id) on update cascade  on delete cascade   创建表时加外键 
+on update  on delete
+no action    set null    set default   cascade
+as   别名
+
+ALTER TABLE 语句用于在已有的表中添加、删除或修改列。
+alter table stu add city varchar(30) after name;    添加列sql
+alter table stu modify  column  city varchar(20);   添加列mysql
+alter table stu drop column city;           删除列
+alter table stu modify  name int first;   将name调整为第一列
+
+ALTER TABLE Persons AUTO_INCREMENT=100； 以100开始主键
+ID int IDENTITY(1,1) PRIMARY KEY  其中IDENTITY(1,1)，开始为1，每次递增1
+
+约束：？？？？
+not null 不能存储null 值
+unique 保证某列的每行必须有唯一值
+primary key   not null 和 unique 的结合。
+foreign key 外键
+check   保证列中的值符合指定的条件
+default 默认值
+alter table wangy modify height int not null;     给height字段中添加 NOT NULL 约束条件
+alter table wangy modify height int null;            height字段允许null
+
+ALTER TABLE Persons ADD UNIQUE (P_Id);     给p_id增加unique
+ALTER TABLE Persons DROP INDEX uc_PersonID;   撤销unique约束
+
+alter table stu add primary key (id);      给id增加主键约束条件
+alter stable stu drop primary key;      撤销primarykey的约束条件
+
+alter table new_stu add foreign key (id) references stu(id);   增加 foreign key 
+alter table new_stu drop foreign key fk_PerOrders;    撤销foreign key
+
+alter table stu add check (id> 0);    CHECK 约束用于限制列中的值的范围
+alter table stu drop CONSTRAINT chk_Person;   撤销check
+
+alter table stu alter city set default 'sandnes';     添加默认值约束
+alter table stu alter city drop default;           撤销默认值约束
+
+create index pindex on stu(name);  在表stu的name列上创建一个叫pindex的索引   ？？？？
+dorp index stu.索引名字；   撤销索引
+truncate table stu;       仅仅删除表中的数据
+
+ISNULL(address,"" )  SQL 
+IFNULL(address,"" )或者 COALESCE(address,"" )     MYSQL
+NVL(address,"" )       ORACLE
+
+数据类型
+character( )   字符/字符串,固定长度n
+varchar(n)    可变长度字符/字符串，最大长度n
+integer(p)   整数值,没小数点 精度p
+integer       精度10
+decimal(p,s)   精确数值，小数点前右p-s位，小数点后有s位
+float(p)     近似数值，尾数精度p,
+float       近似值，尾数精度16
+date   存储年月日的值
+tme   存储时分秒的值
+timestamp   存储年月日时分秒
+array   元素固定长度的有序集合
+multiset  元素的可变长度的无序集合
+xml     存储xml数据
+
+AVG( ) 平均值   select AVG(height) as HeightAverage from stu;   获得身高平均值  HeightAverage单独显示
+count( ) 行数    select COUNT( height)  as heightnum from stu WHERE name = 'php';
+                        SELECT COUNT(DISTINCT column_name) FROM table_name;   返回指定列的不同值的数目
+first( )   返回指定的列中第一个记录的值。
+           select top 1 name from stu order by id asc;     sql
+           select name  from stu order by id asc limit 1;    mysql
+           select name from stu order by id asc where rownum <=1;    oracl
+last( ) 同上将acsc 改为降序 desc
+max( ）  seect max(height) as max_height from stu;   返回指定列的最大值
+min( ) 返回指定列的最小值 同上
+sum( ) 返回数值列的总数
+group by  select site_id, sum(access_log.count) as nums from access_log group by site_id;
+                SELECT Websites.name,COUNT(access_log.aid) AS nums FROM access_log LEFT JOIN Websites ON access_log.site_id=Websites.id GROUP BY Websites.name;
+HAVING    ...  HAVING SUM(access_log.count) > 200;     子句可以让我们筛选分组后的各组数据
+
+exists    SELECT Websites.name, Websites.url FROM Websites WHERE NOT EXISTS (SELECT count FROM access_log WHERE Websites.id = access_log.site_id AND count > 200);
+            如果有一条或多条记录存在返回 True，否则返回 False。
+ucase( )   SELECT UCASE(name) AS site_title, url FROM Websites;    把 "name" 列的值转换为大写
+lcase( )     同上
+mid( )    select mid(name,1,4) as shortTitle form stu;     MID() 函数用于从文本字段中提取字符   起始值是 1，4是长度
+len( )/length( )      select name, lengt(url) as lengthofUrl from websites;    LEN() 函数返回文本字段中值的长度。
+round( )    select round( -1.23);     -1     select round(1.58);  2      select round(1.298,1);   1.3    四舍五入 
+now( )  系统时间   2019-05-18 15：20：12
+format( )   select name,url, DATE_FORMAT(NOW(), '%Y-%m-%d') as date from websites;  用于对字段的显示进行格式化。
+
+
+二、
+1.事务：不可分割：所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。
+          一致性：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。
+          独立性：防止多个事务并发执行时由于交叉执行而导致数据的不一致。
+          持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。
+        两种方法：
+        1.
+               BEGIN             开始一个事务
+               ROLLBACK       事务回滚
+               COMMIT         事务确认
+         2.
+               SET AUTOCOMMIT = 0 禁止自动提交
+               SET AUTOCOMMIT = 1 允许自动提交
+2.三大范式：
+    数据库设计主要包含设计表结构和表之间的关系；
+    在关系型数据库中这种规则就称为范式；
+          1.数据库表每一列都是不可分割的基本数据，同一列中不能有多个值；
+          2.在一个数据库表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中；每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）
+          3.确保数据表中的每一列数据都和主键直接相关，而不能间接相关，属性不依赖于其他非主属性。
+     范式优点：范式化的更新操作通常比反范式化要快 ；
+                     数据很少甚至没有重复数据，所以修改更少的数据。
+                     表通常更小，可以更好地放在内存里，所以执行操作会更快；
+           缺点：通常需要关联
+
+       反范式优点：避免关联
+
+三、
+1.逻辑架构*：确定系统功能范围和系统划分，将一个大系统划分为多个子系统，明确各个子系统间的协作和调用关系；
+	系统流程图：各子系统、相关文件和数据之间的关系，记录整个系统的体系结构
+	系统结构图：层次图，以层次方式描述系统从顶层到最底层的功能分解
+2.开发架构*：指导开发人员如何架构开发环境，开发环境包括系统开发框架的选型，开发工具和编程语言、模块划分等
+3.数据架构
+4.物理架构*：给系统部署人员和运营维护人员看的，系统部署环境模型包括网络环境、硬件环境、软件环境。
+5.运行架构
+四、
+maven
+modeVersion maven版本号
+groupId 三部分组成商业com/非营利性组织org.公司名.项目名   ？？？
+artifactId 构建的项目名
+version 版本号
+
+packaging 项目打包的类型，可以使jar、war、rar、ear、pom，默认是jar  
+properties 可以设置为UTF-8，防止中文乱码，也可定义相关构建版本号，便于日后统一升级。
+
+main 主要代码
+test 测试相关代码
+src/main/java下存放java代码
+src/main/resources下存放配置文件
+pom.xml是maven项目的配置文件s
+
+mvn -v 
+mvn test -Ptest 第一个 test 为 Maven 生命周期阶段，第 2 个 test 为构建配置文件指定的 <id> 参数，这个参数通过 -P 来传输，当然，它可以是 prod 或者 normal 这些由你定义的<id>。
+mvn clean
+
+mvn site 项目文档？？？
+
+
+
+
+
+
+	
+
