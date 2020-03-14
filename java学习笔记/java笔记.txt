@@ -684,9 +684,31 @@ public class Text3 {
  146.IO流 抽象类
  输入流 输出流
  字符流 字节流
- 147.字符流 输出流Writer   字符输入流Reader
- 
- 
-  
+ 147.字符流 输出流FileWriter   字符输入流FileReader
+ File file = new File("test.txt");
+ Writer writer = null;  
+ writer = new FileWriter(file); 或者writer = new FileWriter("test1.txt");
+ writer.write("helloword");会覆盖   writer.close();
+ writer.flush();提交
+ new FileWriter(file, true); 第二个参数追加
+ 换行  windows:  \r\n   linux: \n  mac: \r
+ 148.FileReader 读取 -1表示结尾
+ 149.BufferReader     readline
+ 150.writer =  BufferedWriter(new FileWriter("Test.java"));
+ writer.write("wwwww");
+ writer.newLine();  换行
+ writer.flush();写入
+  151.InputSteam读文件read    OutputStream 写文件write
+  字节流不需要flush();   
+InputStream in = null;
+byte[] bs = new byte[6];
+int len = -1;
+while((len = in.read(bs))!= -1){
+String s = new String(bs, 0, line);
+System.out.peintln(s);
+}
+152.字符流和字节流的转换桥梁
+OutputStreamWriter字符流转换字节流
+str.getByte(,"UTF8")
   
   
