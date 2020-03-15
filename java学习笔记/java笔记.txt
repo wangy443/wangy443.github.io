@@ -709,6 +709,56 @@ System.out.peintln(s);
 }
 152.字符流和字节流的转换桥梁
 OutputStreamWriter字符流转换字节流
-str.getByte(,"UTF8")
-  
-  
+String str = "中"；
+byte[] bytes = str.getBytes("UTF8")； 获取编码
+String s = new String(bytes, "UTF-8"); 根据编码获取UTF-8下的字符
+
+
+  153.PrintWriter          .println();
+  154.Properties
+.setProperty("key", "value")     .getProperty("key")
+.list(打印流)         .load( )
+ PropTest6.class.getClassLoader().getResourceAsStream("names.properties") ;
+155.序列化
+Person p = new Person("","","");
+ObjectOutputStream out = null;
+out = new ObjectOutputStream(new FileOutputStream("文件"))；
+out.writeObject(p);
+out.flush();
+需要实现接口   public class Person  implements Serializable
+反序列化
+ObjectInputStream in =null;
+in = new ObjectInputStream(new FileInputStream("文件"))；
+Object o = in.readObject();
+Person p = (Person) o;
+System.out.println(p.getName());
+序列化
+List<Person> list = new ArrayList<>();
+list.add(p1); list.add(p2); list.add(p3);
+out.writeObject(list);
+反序列化
+List<person> list = (List<person>) o;
+System.out.println(list);
+idea 设置序列化 without
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
