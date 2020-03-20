@@ -1,0 +1,161 @@
+1.函数声明和函数表达式的区别？
+函数声明 function a( ){ }
+函数表达式 var a = function( ){ }
+函数声明有提升，可以在任意位置调用，函数表达式没有提升，要先定义在调用。
+2.闭包？
+有权访问一个函数的局部变量的函数，就叫闭包。闭包是沟通函数外和函数内的桥梁，闭包可以获取函数内部的变量，可以将数据一直保存在内存，利用闭包可以实现set get方法，避免受其他作用域影响。
+改变函数this指向？
+.call(新this指向,参数，参数)；
+.apply(新this指向，[参数，参数])；
+可以根据参数格式决定用哪种方式。
+3.阻止事件冒泡？
+event.stopPropagation();
+event.cancelBubble = true;
+4.取消默认事件？
+event.preventDefault();
+event.returnValue = false;
+
+5.深拷贝浅拷贝？
+浅拷贝是拷贝的指针地址
+深拷贝是拷贝的值
+JSON.parse(JSON.stringify( ));
+递归遍历
+如果是一层，可以用Object.assign({},object);
+
+6.数组去重？
+双重for循环
+indexof()去重，创建一个新数组[ ],对原数组进行遍历用indexof()判断在新数组中是否存在，-1为不存在，进行push到新数组中。
+相邻元素去重，先调用sort()排序；然后比较相邻元素，不相等的push到新数组中
+对象属性去重，遍历数组将对象的值设为对象的属性，对象无arr[i],则push到数组中，在obj上添加arr[i]赋初值1,如果有则将值++
+set与结构赋值去重   [...new Set（[1,2,3,2])；]
+
+7.vue生命周期？
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+beforeDestroy
+destroyed
+
+
+8.组件之间怎么传值？
+
+
+
+9.路由跳转？
+声明式路由  router-link    :to="{}"
+编程式 this.$router.push
+path和params不能同时使用
+this.$router.replace( )
+传参用query 和params
+
+
+10.路由守卫？
+全局前置守卫beforeEach
+                    afterEach
+                    beforeResolve
+路由独享守卫beforeEnter
+组件路由守卫 beforeRouterEnter
+                    beforeRouterUpdate
+                    beforeRouteLeave
+导航被触发
+在失活的组件里调用离开守卫
+调用全局的beforeEach守卫
+在重用的组件里调用beforeUpdate守卫
+在路由配置中调用路由独享守卫beforeEnter
+解析异步路由组件
+在被激活的组件里调用beforeRouteEnter
+调用全局的路由解析守卫beforeResolve守卫
+导航被确认
+调用全局的后置钩子afterEach
+触发dom更新
+用创建好的实例调用beforeRouterEnter守卫中传给next的回调函数
+
+
+11.页面缓存？
+keep-alive
+
+
+12.为什么用vuex？
+多视图依赖同一个状态，对于多层嵌套的组件非常繁琐，兄弟组件状态传递无能为力
+来自不同视图的行为变更同一状态，采用父子组件直接引用或者通过事件来变更和同步状态
+这些模式会导致代码无法维护，所以把共享状态抽取出来。
+
+
+13.vuex包含哪些属性？
+state      在计算属性中读取 return this.$store.state.count
+getters    
+mutations       this.$store.commit(state,{ });  同步函数
+actions          this.$store.dispatch("   ",{  });  异步函数
+modules
+
+
+14.v-show  v-if的区别？
+v-show是display:none
+v-if是移除节点 添加节点
+操作频繁可以用v-show
+
+15.v-for  v-if的优先级？
+v-for优先级高
+
+16.生命周期函数可以用箭头函数嘛？
+不可以，箭头函数中是没有this的
+
+
+17.如何提高页面加载速度？
+路由懒加载，组件懒加载
+开启gzip
+去掉.map文件
+引用cdn
+图片压缩
+
+
+18.vue更新视图的方法？
+this.$set(obj,key,value)
+
+
+19.jq事件监听的方法？
+.bind(types, data,fn)
+.live(types,data,fn)   绑定到document
+.delegate('li','click',data,fn)   绑定到父元素
+.on('click','li'data,fn)
+
+jq事件委托？
+将监听函数绑定在父节点上，让父辈完成事件监听，这样就把事情“委托”过去了。在父辈元素的监听函数中，可以通过event.target属性那带触发的原始元素，然后再对其进行相关处理。
+
+
+jq修改样式的方法？
+.css({"width":"30px"});
+.style.width = "30px";
+.addClass();
+
+
+jq有哪些选择器？
+es6中哪些用法？
+let const
+结构赋值
+new set()
+promise
+async   await
+Array.from() 将类对象转换为数组
+Array.of(1，2，3)     将一组值转换为数组 [1,2,3];
+Object.keys();
+Object.assign()
+函数默认值
+
+
+less 如何定义变量？
+@
+用过哪些前端框架？
+iview
+elementUI  
+antd
+layui
+
+开发过小程序吗？
+
+
+
+
