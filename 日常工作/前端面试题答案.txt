@@ -23,10 +23,10 @@ JSON.parse(JSON.stringify( ));
 如果是一层，可以用Object.assign({},object);
 
 6.数组去重？
-双重for循环
 indexof()去重，创建一个新数组[ ],对原数组进行遍历用indexof()判断在新数组中是否存在，-1为不存在，进行push到新数组中。
 相邻元素去重，先调用sort()排序；然后比较相邻元素，不相等的push到新数组中
 对象属性去重，遍历数组将对象的值设为对象的属性，对象无arr[i],则push到数组中，在obj上添加arr[i]赋初值1,如果有则将值++
+.includes();
 set与结构赋值去重   [...new Set（[1,2,3,2])；]
 
 7.vue生命周期？
@@ -154,7 +154,123 @@ elementUI
 antd
 layui
 
+如何判断一个变量的类型?
+typeof
+
+
 开发过小程序吗？
+
+
+
+
+Event Loop是什么？
+事件循环机制，解决javascript单线程运行时不会阻塞的一种机制，就是异步原理
+是执行模型，在不同的地方有不同的实现。浏览器和Node.js基于不同的技术实现了各自的Event Loop。
+node.js 是根据libuv，浏览器的eventLoop是在html5的规范中明确定义
+
+同步、异步又分宏任务和微任务
+宏任务Tasks包括：
+setTimeout
+setInterval
+setImmediate(Node独有)
+requestAnimationFrame(浏览器有)
+I/O
+Ul rendering (浏览器独有)
+
+微任务Microtasks包括：
+process.nextTick(Node独有)
+Promise.then()
+Object.observe
+MutationObserve
+注意：Promise构造函数中的代码是同步执行的
+
+
+Tasks 宏任务队列
+Microtasks 微任务队列
+JS stack js调用栈
+Log控制台
+
+从事件队列取一个事件时，有微任务就把微任务执行完，然后才开始执行事件
+在浏览器端所有的宏任务都在一个队列里边执行，微任务会追加到当前一轮事件循环的末尾
+
+
+node.js中 process.nextTick 优先于 .then
+
+总结：
+浏览器的Event Loop和Node.js的EventLoop是不同的，实现机制也是不同的，不能混为一谈。
+Node.js可以理解为有4个宏任务队列和2个微任务队列，但是执行宏任务时有6个阶段。
+Node.js中，先执行全局Script代码，执行完同步代码调用栈清空后，先从微任务队列Next Tick Queue中一次取出
+所有的任务放入调用栈中执行，再从微任务队列other microtask Queue中依次取出所有的任务放入调用栈中执行。
+然后开始宏任务的6个阶段，每个阶段都将该宏任务队列中的所有任务都取出来执行（注意，这里和浏览器不一样，浏览器只取一个），每个宏任务执行完毕后，考试执行微任务，再开始执行下一阶段宏任务，以此构成事件循环。
+
+Node端的EventLoop
+times计时器 setTimeout  setInterval的回调
+I/O
+idle,prepare  node内部用
+poll轮询
+check检查 存放setImmediate回调
+close callbacks 关闭的回调如：sockect.on("close")
+
+
+浏览器渲染优化
+performance 工具
+浏览器1s刷新频率60Hz  75Hz
+卡死 fps = 1
+卡顿1<fps<60
+
+javascript  style  layout   paint   composite
+js/css   样式   布局  绘制   合成
+
+
+setTimeout  和 requestAnimationFrame
+
+
+
+
+
+1.javascript核心
+对象、原型链、构造函数、执行上下文堆栈、执行上下文、变量对象、活动对象、作用域链、闭包、this
+2.运行时的描述
+对于每个执行上下文，都有三个重要的属性：
+变量对象
+作用域链
+this
+
+三种类型的代码：全局代码、函数代码和eval代码
+
+
+函数提升优先于变量提升
+填充VO的顺序是：函数的形参 > 函数声明 > 变量声明
+
+
+如何解决跨域？
+后端配置cors
+proxy
+jsonp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
