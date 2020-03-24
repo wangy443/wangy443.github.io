@@ -7,10 +7,14 @@
 改变函数this指向？
 .call(新this指向,参数，参数)；
 .apply(新this指向，[参数，参数])；
+.bind(text);
 可以根据参数格式决定用哪种方式。
+call和apply 会只执行，bind 不会
+
 3.阻止事件冒泡？
 event.stopPropagation();
 event.cancelBubble = true;
+
 4.取消默认事件？
 event.preventDefault();
 event.returnValue = false;
@@ -21,6 +25,7 @@ event.returnValue = false;
 JSON.parse(JSON.stringify( ));
 递归遍历
 如果是一层，可以用Object.assign({},object);
+[...a]
 
 6.数组去重？
 indexof()去重，创建一个新数组[ ],对原数组进行遍历用indexof()判断在新数组中是否存在，-1为不存在，进行push到新数组中。
@@ -49,11 +54,16 @@ Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载dom、渲
 当销毁时，立即执行beforeDestroy,此处一般做善后工作，例如清除计时器等
 组件的数据绑定、监听 去掉后执行下dom,此时执行destroy.
 
-
-
 8.组件之间怎么传值？
-
-
+兄弟组件传值：
+var EventBus = new Vue();
+Object.defineProperties(Vue.prototype,{
+$bus:{
+get: function(){
+   return  EventBus
+}
+}
+})
 
 9.路由跳转？
 声明式路由  router-link    :to="{}"
@@ -155,6 +165,24 @@ Array.of(1，2，3)     将一组值转换为数组 [1,2,3];
 Object.keys();
 Object.assign()
 函数默认值
+
+作用域链？
+作用域分为全局作用域和局部作用域；
+在当前作用域中没有找到值，就会向上级作用域去查，直到查到全局作用域，这个查找过程就形成链条，叫做作用域链
+
+
+prototype、__proto__与constructor？
+__proto__ 和constructor属性是对象独有的。
+prototype属性是函数独有的。但是js中函数也是一种对象，所以函数也拥有__proto__和constructor属性
+
+__proto__ ：
+__proto__ 的作用是当访问一个对象属性时，如果该对象内部不存在这个属性，那么就会去他的__proto__属性所指向的对象中寻找，如果父对象也不存在这个属性，就继续向上查找，直到原型链顶端null,由以上这种通过__proto__属性来链接对象直到null的一条链即为原型链。
+平时调用定的字符串方法、数组方法、对象方法、函数方法都是靠__proto__继承来的。
+
+prototype：
+是函数独有的，它是从一个函数指向一个对象，它的含义是函数的原型对象，也就是这个函数
+
+
 
 
 less 如何定义变量？
