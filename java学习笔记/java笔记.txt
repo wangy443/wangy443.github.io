@@ -740,6 +740,21 @@ out.writeObject(list);
 List<person> list = (List<person>) o;
 System.out.println(list);
 idea 设置序列化 without
+156.线程的创建方式
+一.继承Thread类，ctrl+o重写的快捷键
+子类要重写run方法，线程执行的逻辑体
+.start(); 启动线程
+.getName()； 获取线程的名字
+二.实现Runnable接口
+Thread mt = new Thread(new Runner("下落"));
+157.线程的生命周期
+新建：线程被new出来
+准备就绪 线程具有执行的资格，即线程调用了 start()，没有执行的权利
+运行  具备执行的资格和执行的权利
+阻塞  sleep  wait 没有执行的资格和执行的权利
+销毁  线程的对象变成垃圾，释放销毁
+158.并发
+
 
 
 
