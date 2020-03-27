@@ -308,7 +308,93 @@ require 是赋值过程，其实require的结果就是对象、数字、字符串、函数等，再把require
 import是解构过程，目前所有引擎都没有实现import,我们在node中使用babel支持es6，也仅仅是将而是转换为es5再执行，import语法会被转成require.
 
 
+vue中@/ ./  ../  ~@/的区别？
+./ 表示相对路径，具体代表当前目录下的同级目录，遵从的是从后向前找文件
+@/也表示相对路径，在/build/webpack.base.conf.js中@是配置的，@代表src目录，遵从从前往后找，比如@/components/login,就表示src/components/login文件
+../表示父级目录
+<img src="@/assets/####">   @表示src文件
+background-image: url('~@/assets/image/logo.png');  ~表示根目录
 
+
+Vue scoped ( >>>  ||  /deep/)
+vue style设置为scoped的时候web组件不会污染其他组件，也不被其他组件污染的css规范。这样在打包的时候会生成一个独一无二的hash值，这样父组件就不会影响子组件
+
+Vue中assets 和static的区别？
+相同点：
+都是存放静态资源文件的。
+不同点：
+assets中存放的静态资源在项目打包时，会将assets中放置的静态资源文件进行打包上传，所谓打包可以简单理解为压缩体积、代码格式化。压缩后的文件最总也会放置在static文件中跟index.html一同传至服务器。
+static中放置的静态资源文件就不会走打包压缩格式化代码的流程，而是直接进入打包好的目录，直接上传至服务器。因为避免了压缩直接进行上传，在打包时会提高一定的效率，但是static中的资源文件由于没有压缩等操作，所以文件的体积相对assets中打包的文件较大点。在都武器中会占用更大的空间。建议将第三方的资源文件放到static中，因为第三方已经做过处理，不需要在处理可直接上传。
+
+
+babel-ployfill 的作用
+babel是转码器，可以将ES6代码转为ES5,从而可以在现有环境执行，所以我们可以用ES6编写，而不用考虑环境是否支持。babel默认只转换新的javascript句法（syntax）,而不转换API，比如iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法比如Object.assign都不会转码。
+ployfill指的是“用于实现浏览器不支持原生功能的代码”，比如，现代浏览器应该支持fetch函数，对于不支持的浏览器，网页中引入对应的fetch的polyfill后，这个polyfill就给全局的window对象增加一个fetch函数，这个网页中的js 可以直接使用fetch函数了，就好像浏览器本来就支持一样。
+npm install --save babel-polyfill
+import 'babel-polyfill'
+
+
+
+myMixin = { }
+mixins: [myMixin] 混入
+数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先；
+同名钩子函数将合并为一个数组，因此都将被调用，另外，混入对象的钩子将在组件自身钩子之前调用；
+指为对象的选项，如methods、components、directives将被合并为同一个对象。两个对象健名冲突时，取组件对象的健值对；
+
+全局过滤器
+Vue.filter('globalFilter', function(value){
+return value+'!!!'
+})
+
+局部过滤器
+filters:{
+ componentFilter:function(value){
+return value+'!!!'
+}
+}
+
+methods中调用filters中的过滤器
+局部
+this.$options.filters.componentFilter('参数')
+全局
+Vue.filter('globalFilter')('参数')
+
+
+自定义指令 v-demo
+Vue.directive("demo",{
+bind:function(el,binding,vnode){
+只调用一次，指令第一次绑定到元素时调用，在这里可以进行一次性的初始化设置；
+},
+inserted:function(el,binding,vnode,oldVnode){
+被绑定元素插入父节点时调用，仅保证父节点存在，但不一定已被插入文档中；
+},
+update:function(el,binding,vnode,oldVnode){
+所在组件的VNode更新时调用，但是可能发生在其子VNode更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新
+},
+componentUpdated:function(el,binding,vnode,oldVnode){
+指令所在组件的VNode及其子VNode全部更新后调用
+},
+unbind:function(el,binding,vnode,oldVnode){
+只调用一次，指令与元素解绑时调用
+}
+})
+
+directives:{
+demo:{
+
+}
+}
+
+
+点击下载文件
+iframe
+form
+var link = document.createElement('a');
+link.setAttribute('download','文件名');
+link.href = 'url';
+link.click();
+window.location.href = 'url';
+window.open('url');
 
 
 
