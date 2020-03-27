@@ -134,7 +134,9 @@ v-for优先级高
 
 
 18.vue更新视图的方法？
+深拷贝
 this.$set(obj,key,value)
+this.$forceUpdate();
 
 
 19.jq事件监听的方法？
@@ -396,6 +398,9 @@ link.click();
 window.location.href = 'url';
 window.open('url');
 
+
+什么是同源策略？
+协议、IP、端口 三者都相同则为同源
 
 
 
